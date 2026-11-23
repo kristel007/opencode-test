@@ -6,7 +6,7 @@
   },
   "postCreateCommand": "bash .devcontainer/setup.sh",
   "postAttachCommand": "echo 'OpenCode ready. Type: oc'",
-  "remoteUser": "codespace",
+  "remoteUser": "vscode",
   "customizations": {
     "vscode": {
       "settings": {
