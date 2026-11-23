@@ -5,7 +5,7 @@
     "ghcr.io/devcontainers/features/github-cli:1": {}
   },
   "postCreateCommand": "bash .devcontainer/setup.sh",
-  "postAttachCommand": "echo 'OpenCode ready. Type: oc'",
+  "postAttachCommand": "exec oc",
   "remoteUser": "vscode",
   "customizations": {
     "vscode": {
