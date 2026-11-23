@@ -14,6 +14,12 @@ grep -qF '.opencode/bin' "$HOME/.bashrc" 2>/dev/null || echo 'export PATH="$HOME
 sudo ln -sf "$BIN" /usr/local/bin/opencode
 sudo ln -sf "$BIN" /usr/local/bin/oc
 
+# Any new terminal starts OpenCode automatically (iPhone: zero typing).
+if ! grep -qF 'OpenCode auto-start for iPhone' "$HOME/.bashrc" 2>/dev/null; then
+  printf '\n# OpenCode auto-start for iPhone\nif [ -t 0 ] && [ -z "${OC_AUTOSTART_DONE:-}" ] && [ -f "$HOME/.opencode-autostart" ]; then\n  export OC_AUTOSTART_DONE=1\n  cd /workspaces/opencode-test 2>/dev/null || true\n  exec oc\nfi\n' >> "$HOME/.bashrc"
+fi
+touch "$HOME/.opencode-autostart"
+
 echo "--- proof ---"
 oc --version
-echo "=== OK. OpenCode is available as: oc ==="
+echo "=== OK. OpenCode starts automatically. ==="
